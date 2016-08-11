@@ -1,7 +1,16 @@
 import Tkinter as tk
+import subprocess as sp
+import os
 
 def onKeyPress(event):
     text.insert('end', 'You pressed %s\n' % (event.char, ))
+    extProc = sp.Popen(['git','pull'])
+    (message, err) = extProc.communicate()
+    print message
+    extProc = sp.Popen(['python','run.py'])
+    root.quit()
+    root.destroy()
+
 
 root = tk.Tk()
 root.geometry('300x200')
